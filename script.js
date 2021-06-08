@@ -29,7 +29,7 @@ timeCheck()
 let hourNow = moment().format('h');
 let hourNow24= parseInt(moment().format('HH'));
 let hourNowInt = parseInt(hourNow);
-let Timer;
+var Timer;
 let timeNow;
 
 const hour1 = $('#time7').text();
@@ -63,7 +63,7 @@ const hour11Int = parseInt(hour11);
 
 $('#btn1').click(function() {
   if($('#text7').val()) {
-    localStorage.removeItem('text7');
+    localStorage.removeItem('#text7');
   }
 
   const hour1String = JSON.stringify(hour1);
@@ -73,7 +73,7 @@ $('#btn1').click(function() {
 
 $('#btn2').click(function() {
   if($('#text8').val()) {
-    localStorage.removeItem('text8');
+    localStorage.removeItem('#text8');
   }
 
   const hour2String = JSON.stringify(hour2);
@@ -83,7 +83,7 @@ $('#btn2').click(function() {
 
 $('#btn3').click(function() {
   if($('#text9').val()) {
-    localStorage.removeItem('text9');
+    localStorage.removeItem('#text9');
   }
 
   const hour3String = JSON.stringify(hour3);
@@ -93,7 +93,7 @@ $('#btn3').click(function() {
 
 $('#btn4').click(function() {
   if($('#text10').val()) {
-    localStorage.removeItem('text10');
+    localStorage.removeItem('#text10');
   }
 
   const hour4String = JSON.stringify(hour4);
@@ -103,7 +103,7 @@ $('#btn4').click(function() {
 
 $('#btn5').click(function() {
   if($('#text11').val()) {
-    localStorage.removeItem('text11');
+    localStorage.removeItem('#text11');
   }
 
   const hour5String = JSON.stringify(hour5);
@@ -113,7 +113,7 @@ $('#btn5').click(function() {
 
 $('#btn6').click(function() {
   if($('#text12').val()) {
-    localStorage.removeItem('text12');
+    localStorage.removeItem('#text12');
   }
 
   const hour6String = JSON.stringify(hour6);
@@ -123,7 +123,7 @@ $('#btn6').click(function() {
 
 $('#btn7').click(function() {
   if($('#text1').val()) {
-    localStorage.removeItem('text1');
+    localStorage.removeItem('#text1');
   }
 
   const hour7String = JSON.stringify(hour7);
@@ -133,7 +133,7 @@ $('#btn7').click(function() {
 
 $('#btn8').click(function() {
   if($('#text2').val()) {
-    localStorage.removeItem('text2');
+    localStorage.removeItem('#text2');
   }
 
   const hour8String = JSON.stringify(hour8);
@@ -143,7 +143,7 @@ $('#btn8').click(function() {
 
 $('#btn9').click(function() { 
   if($('#text3').val()) {
-    localStorage.removeItem('text3');
+    localStorage.removeItem('#text3');
   }
 
   const hour9String = JSON.stringify(hour9);
@@ -153,7 +153,7 @@ $('#btn9').click(function() {
 
 $('#btn10').click(function() { 
     if($('#text4').val()) {
-      localStorage.removeItem('text4');
+      localStorage.removeItem('#text4');
     }
   
     const hour10String = JSON.stringify(hour10);
@@ -163,7 +163,7 @@ $('#btn10').click(function() {
 
   $('#btn11').click(function() { 
     if($('#text5').val()) {
-      localStorage.removeItem('text5');
+      localStorage.removeItem('#text5');
     }
   
     const hour11String = JSON.stringify(hour11);
@@ -183,31 +183,31 @@ function colorCoding() {
 
   Timer = setInterval(colorCoding, 1000);
   
-  if(hourNow24 >= 11 && hourNow24 <= 12) {
+  if(hourNow24 >= 0 && hourNow24 <= 24) {
 
-    for (let i =1; i <=11 ; i++) { 
+    for (let i =0; i <=24 ; i++) { 
      let hourInInt = parseInt($('#time'+i).text());
 
-      if (hourInInt < 11) {
-        hourInInt = hourInInt + 12;
+      if (hourInInt < 6) {
+        hourInInt = hourInInt + 24;
       }
       
       if (hourInInt == hourNow24) {
-        $('#text'+i).css('background-color', '#f9512e');
+        $('#text'+i).css('background-color', '#ff6961');
         continue;
       }
       
       if (hourInInt < hourNow24) {
-        $('#text'+i).css('background-color', 'lightgray');
+        $('#text'+i).css('background-color', '#d3d3d3');
       } 
       else {
-        $('#text'+i).css('background-color', 'lightgreen');
+        $('#text'+i).css('background-color', '#77dd77');
       }
     }
 
   }
   else {
-    clearInterval(TIMER);
-    $('textarea').css('background-color', 'light blue');
+    clearInterval(Timer);
+    $('textarea').css('background-color');
   }
 }

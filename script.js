@@ -1,4 +1,10 @@
-$("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
+var timeDisplayEl = $('#time-display');
+
+ function displayTime() {
+    var rightNow = moment().format('MMM DD, YYYY [at] hh:mm:ss a');
+    timeDisplayEl.text(rightNow);
+  }
+
 $(".saveBtn").on("click",function(){
     var input = $(this).siblings(".description").val()
     var time = $(this).parent().attr("id")
@@ -181,33 +187,29 @@ colorCoding();
 
 function colorCoding() {
 
-  Timer = setInterval(colorCoding, 1000);
-  
   if(hourNow24 >= 0 && hourNow24 <= 24) {
 
     for (let i =0; i <=24 ; i++) { 
-     let hourInInt = parseInt($('#time'+i).text());
+     let hourInInt = parseInt($('#time'+i));
 
       if (hourInInt < 6) {
         hourInInt = hourInInt + 24;
       }
       
-      if (hourInInt == hourNow24) {
+      if (hourInInt === hourNow24) {
         $('#text'+i).css('background-color', '#ff6961');
         continue;
       }
       
       if (hourInInt < hourNow24) {
-        $('#text'+i).css('background-color', '#d3d3d3');
+        $('#text'+i).css('background-color', '#77dd77');
       } 
       else {
-        $('#text'+i).css('background-color', '#77dd77');
+        $('#text'+i).css('background-color', '#d3d3d3');
       }
     }
 
   }
-  else {
-    clearInterval(Timer);
-    $('textarea').css('background-color');
-  }
+ 
 }
+setInterval(displayTime, 1000);
